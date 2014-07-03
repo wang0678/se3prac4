@@ -207,6 +207,14 @@ public class TestGame2048 extends TestCase {
 				          };
 		out=processer.rotate_clockWise_90degree(in);
 		
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after rotate board clockwise 90 degree became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after rotate board clockwise 90 degree became", out,
+					expected, GameUtil.FAILED);
+			fail();
+		}
 		}
 	
 	public void test_rotate_clockWise_180degree(){
@@ -229,7 +237,14 @@ public class TestGame2048 extends TestCase {
 		
 		out=processer.rotate_clockWise_180degree(in);
 		
-		
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after rotate board clockwise 180 degree became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after rotate board clockwise 180 degree became", out,
+					expected, GameUtil.FAILED);
+			fail();
+		}
 		}
 		
 	public void test_rotate_clockWise_270degree(){
@@ -252,7 +267,14 @@ public class TestGame2048 extends TestCase {
 		
 		out=processer.rotate_clockWise_270degree(in);
 		
-		
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after rotate board clockwise 270 degree became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after rotate board clockwise 270 degree became", out,
+					expected, GameUtil.FAILED);
+			fail();
+		}
 		}
 		
 	public void test_tilt_board_left() {
@@ -271,7 +293,14 @@ public class TestGame2048 extends TestCase {
 				                 { 2, 0, 0, 0 },
 				                 { 4, 0, 0, 0 }, 
 				                 { 2, 0, 0, 0 } };
-		
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after tilt board left became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after tilt board left became", out,
+					expected, GameUtil.FAILED);
+			fail();
+		}
 		
 		in = new int[][] { { 2, 2, 0, 2 }, 
 				           { 0, 0, 0, 2 }, 
@@ -284,21 +313,34 @@ public class TestGame2048 extends TestCase {
 				                  { 4, 0, 0, 0 }, 
 				                  { 2, 4, 6, 8 } };
 		out = processer.tilt_board_left(in);
-		
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after tilt board left became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after tilt board left became", out,
+					expected, GameUtil.FAILED);
+			fail();
+		}
 		
 		
 		in = new int[][] { { 0, 0, 0, 2 }, 
 				           { 0, 2, 0, 2 }, 
 				           { 2, 4, 2, 2 },
-				           { 2, 4, 6, 8 } 
-				           };
+				           { 2, 4, 6, 8 } };
 		expected = new int[][] { { 2, 0, 0, 0 }, 
 				                 { 4, 0, 0, 0 },
 				                 { 2, 4, 4, 0 }, 
-				                 { 2, 4, 6, 8 } 
-		                 };
+				                 { 2, 4, 6, 8 } };
 		out = processer.tilt_board_left(in);
-	}
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after tilt board left became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after tilt board left became", out,
+					expected, GameUtil.FAILED);
+			fail();
 	}
 
-	
+	}
+
+}
