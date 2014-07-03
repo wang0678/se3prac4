@@ -342,6 +342,7 @@ public class TestGame2048 extends TestCase {
 	}
 
 	}
+	
 	public void test_tilt_board_up() {
 		Game2048Core processer = new Game2048Core();
 		int[][] in = null;
@@ -387,4 +388,99 @@ public class TestGame2048 extends TestCase {
 			fail();
         }
 	}
+
+    public void test_tilt_board_right(){
+    	
+    	Game2048Core processer = new Game2048Core();
+		int[][] in = null;
+		int[][] out = null;
+		int[][] expected = null;
+
+		in = new int[][] { { 2, 0, 0, 2 }, 
+				           { 2, 0, 0, 0 },
+				           { 0, 0, 2, 2 },
+				           { 2, 0, 0, 0 } 
+				          };
+		out = processer.tilt_board_right(in);
+		expected = new int[][] { { 0, 0, 0, 4 }, 
+				                 { 0, 0, 0, 2 },
+				                 { 0, 0, 0, 4 }, 
+				                 { 0, 0, 0, 2 } };
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after tilt board right became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after tilt board right became", out,
+					expected, GameUtil.FAILED);
+			fail();
+		}
+		
+		
+		in = new int[][] { { 2, 2, 2, 0 }, 
+		                   { 2, 0, 4, 0 },
+		                   { 4, 0, 2, 2 },
+		                   { 2, 2, 0, 4 } 
+		                 };
+        out = processer.tilt_board_right(in);
+        expected = new int[][] { { 0, 0, 2, 4 }, 
+		                         { 0, 0, 2, 4 },
+		                         { 0, 0, 4, 4 }, 
+		                         { 0, 0, 4, 4 } };
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after tilt board right became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after tilt board right became", out,
+					expected, GameUtil.FAILED);
+			fail();
+        }
+    	
+    }
+    
+    public void test_tilt_board_down(){
+    	Game2048Core processer = new Game2048Core();
+		int[][] in = null;
+		int[][] out = null;
+		int[][] expected = null;
+
+		in = new int[][] { { 2, 0, 0, 2 }, 
+				           { 2, 0, 0, 0 },
+				           { 0, 0, 2, 2 },
+				           { 2, 0, 0, 0 } 
+				          };
+		out = processer.tilt_board_down(in);
+		expected = new int[][] { { 0, 0, 0, 0 }, 
+				                 { 0, 0, 0, 0 },
+				                 { 2, 0, 0, 0 }, 
+				                 { 4, 0, 2, 4 } };
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after tilt board down became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after tilt board down became", out,
+					expected, GameUtil.FAILED);
+			fail();
+		}
+		
+		
+		in = new int[][] { { 2, 2, 2, 0 }, 
+		                   { 2, 0, 4, 0 },
+		                   { 4, 0, 2, 2 },
+		                   { 2, 2, 0, 4 } 
+		                 };
+        out = processer.tilt_board_down(in);
+        expected = new int[][] { { 0, 0, 0, 0 }, 
+		                         { 4, 0, 2, 0 },
+		                         { 4, 0, 4, 2 }, 
+		                         { 2, 4, 2, 4 } };
+		if (GameUtil.compareExpectToActualBoard(expected, out)) {
+			GameUtil.printBoard(in, "after tilt board down became", out,
+					expected, GameUtil.PASSED);
+		} else {
+			GameUtil.printBoard(in, "after tilt board down became", out,
+					expected, GameUtil.FAILED);
+			fail();
+        }
+    	
+    }
 }
