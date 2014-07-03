@@ -9,6 +9,9 @@ public class Game2048Core implements Game2048ProcesserIf {
 	private static final int ROWS = GameUtil.ROWS;
 	private static final int COLS = GameUtil.COLS;
 	private int score = 0;
+	private boolean lose = false;
+
+	private int[][] tiles = new int[ROWS][COLS];
 	
 	/**
 	 * Method to tilt line to left without same number merge.
@@ -65,16 +68,61 @@ public class Game2048Core implements Game2048ProcesserIf {
 		return combine_tiles(tilt_line_left(oldline));
 		}
 
-	/**
-	 * To implement the method to tilt the board to left.
-	 */
-	public void tilt_board_left() {
+	public int[][] tilt_board_left(int[][] old) {
+		int[][] after = new int[ROWS][COLS];
+		for (int i = 0; i < COLS; i++) {
+			int[] line = tilt_line_left_combine(old[i]);
+			System.arraycopy(line, 0, after[i], 0, COLS);
+		}
+		return after;
+	}
+	public int[][] tilt_board_up(int[][] old) {
+		int[][] temp = rotate_clockWise_270degree(old);
+		int[][] temp2 = tilt_board_left(temp);
+		return rotate_clockWise_90degree(temp2);
+	}
 
-}
+	public int[][] tilt_board_down(int[][] old) {
+		int[][] temp = rotate_clockWise_90degree(old);
+		int[][] temp2 = tilt_board_left(temp);
+		return rotate_clockWise_270degree(temp2);
+	}
 
+	public int[][] tilt_board_right(int[][] old) {
+		int[][] temp = rotate_clockWise_180degree(old);
+		int[][] temp2 = tilt_board_left(temp);
+		return rotate_clockWise_180degree(temp2);
+	}
+
+	public int[][] rotate_clockWise_90degree(int[][] old) {
+		if (old == null) {
+			return null;
+		}
+		int ROWS = old.length;
+		int COLS = old[0].length;
+		int[][] temp = new int[ROWS][COLS];
+
+		int dst = ROWS - 1;
+		// rotate the matrix clockwise 90 degree.
+		for (int i = 0; i < ROWS; i++, dst--) {
+			for (int j = 0; j < COLS; j++) {
+				temp[j][dst] = old[i][j];
+			}
+		}
+
+		return temp;
+	}
+
+	public int[][] rotate_clockWise_180degree(int[][] old) {
+		return rotate_clockWise_90degree(rotate_clockWise_90degree(old));
+	}
+
+	public int[][] rotate_clockWise_270degree(int[][] old) {
+		return rotate_clockWise_90degree(rotate_clockWise_90degree(rotate_clockWise_90degree(old)));
+	}
 	public int score() {
 		return score;
 	}
-
+	
 
 }

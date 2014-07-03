@@ -14,4 +14,9 @@ public interface Game2048ProcesserIf {
 	 */
 	public int score();
 
+	/**
+	 * Reset the gameboard to initial state, including setting the score to
+	 * zero, reset all win/lose flag and empty all the numbers
+	 */
+	
 }

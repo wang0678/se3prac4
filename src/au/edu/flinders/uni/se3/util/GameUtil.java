@@ -67,6 +67,6 @@ public abstract class GameUtil {
 		}
 		return emptySpots;
 	}
-
+	
 
 }

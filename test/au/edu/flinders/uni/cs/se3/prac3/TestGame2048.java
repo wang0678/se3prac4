@@ -205,6 +205,100 @@ public class TestGame2048 extends TestCase {
 				           { 0, 0, 2, 2 },
 				           { 2, 0, 0, 0 }
 				          };
+		out=processer.rotate_clockWise_90degree(in);
+		
 		}
+	
+	public void test_rotate_clockWise_180degree(){
+		Game2048Core processer = new Game2048Core();
+		int[][] in = null;
+		int[][] out = null;
+		in = new int[][] {
+				           { 2, 0, 0, 2 }, 
+				           { 2, 0, 0, 0 }, 
+				           { 0, 0, 2, 2 },
+				           { 2, 0, 0, 0 }
+				          };
+		
+		int[][] expected = new int[][] {
+		           { 0, 0, 0, 2 }, 
+		           { 2, 2, 0, 0 }, 
+		           { 0, 0, 0, 2 },
+		           { 2, 0, 0, 2 }
+		          };
+		
+		out=processer.rotate_clockWise_180degree(in);
+		
+		
+		}
+	
+	public void test_rotate_clockWise_270degree(){
+		Game2048Core processer = new Game2048Core();
+		int[][] in = null;
+		int[][] out = null;
+		in = new int[][] {
+				           { 2, 0, 0, 2 }, 
+				           { 2, 0, 0, 0 }, 
+				           { 0, 0, 2, 2 },
+				           { 2, 0, 0, 0 }
+				          };
+		
+		int[][] expected = new int[][] {
+		           { 2, 0, 2, 0 }, 
+		           { 0, 0, 2, 0 }, 
+		           { 0, 0, 0, 0 },
+		           { 2, 2, 0, 2 }
+		          };
+		
+		out=processer.rotate_clockWise_270degree(in);
+		
+		
+		}
+	
+	public void test_tilt_board_left() {
+		Game2048Core processer = new Game2048Core();
+		int[][] in = null;
+		int[][] out = null;
+		int[][] expected = null;
+
+		in = new int[][] { { 2, 0, 0, 2 }, 
+				           { 2, 0, 0, 0 },
+				           { 0, 0, 2, 2 },
+				           { 2, 0, 0, 0 } 
+				          };
+		out = processer.tilt_board_left(in);
+		expected = new int[][] { { 4, 0, 0, 0 }, 
+				                 { 2, 0, 0, 0 },
+				                 { 4, 0, 0, 0 }, 
+				                 { 2, 0, 0, 0 } };
+		
+		
+		in = new int[][] { { 2, 2, 0, 2 }, 
+				           { 0, 0, 0, 2 }, 
+				           { 0, 0, 2, 2 },
+				           { 2, 4, 6, 8 }
+				           };
+				         
+		expected = new int[][] {  { 4, 2, 0, 0 }, 
+				                  { 2, 0, 0, 0 },
+				                  { 4, 0, 0, 0 }, 
+				                  { 2, 4, 6, 8 } };
+		out = processer.tilt_board_left(in);
+		
+		
+		
+		in = new int[][] { { 0, 0, 0, 2 }, 
+				           { 0, 2, 0, 2 }, 
+				           { 2, 4, 2, 2 },
+				           { 2, 4, 6, 8 } 
+				           };
+		expected = new int[][] { { 2, 0, 0, 0 }, 
+				                 { 4, 0, 0, 0 },
+				                 { 2, 4, 4, 0 }, 
+				                 { 2, 4, 6, 8 } 
+				                 };
+		out = processer.tilt_board_left(in);
 	}
+}
+	
 	
