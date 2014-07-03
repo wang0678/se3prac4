@@ -26,11 +26,35 @@ public class Game2048Board extends JPanel {
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					processer.resetGame();
+				}
+				if (!processer.canMove()) {
+					processer.markGameLose();
+				}
 				
+				if (!processer.win() && !processer.lose()) {
+					switch (e.getKeyCode()) {
+					case KeyEvent.VK_LEFT:
+						processer.tilt_board_left();
+						break;
+					case KeyEvent.VK_RIGHT:
+						processer.tilt_board_right();
+						break;
+					case KeyEvent.VK_DOWN:
+						processer.tilt_board_down();
+						break;
+					case KeyEvent.VK_UP:
+						processer.tilt_board_up();
+						break;
+					}
+				}
 					
+				if (!processer.win() && !processer.canMove()) {
+					processer.markGameLose();
+				}
 				
-
-				
+				repaint();
 			}
 		});
 		
