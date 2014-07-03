@@ -56,14 +56,14 @@ public class Game2048Core implements Game2048ProcesserIf {
 		}
 
 		return after;
-	}
+			}
 
 	/**
 	 * Tilt line number to left with merge.
 	 */
 	public int[] tilt_line_left_combine(int[] oldline) {
 		return combine_tiles(tilt_line_left(oldline));
-	}
+		}
 
 	/**
 	 * To implement the method to tilt the board to left.
@@ -76,5 +76,5 @@ public class Game2048Core implements Game2048ProcesserIf {
 		return score;
 	}
 
-	
-		}
+
+}
