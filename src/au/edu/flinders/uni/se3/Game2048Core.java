@@ -76,6 +76,7 @@ public class Game2048Core implements Game2048ProcesserIf {
 		}
 		return after;
 	}
+
 	public int[][] tilt_board_up(int[][] old) {
 		int[][] temp = rotate_clockWise_270degree(old);
 		int[][] temp2 = tilt_board_left(temp);
@@ -120,9 +121,64 @@ public class Game2048Core implements Game2048ProcesserIf {
 	public int[][] rotate_clockWise_270degree(int[][] old) {
 		return rotate_clockWise_90degree(rotate_clockWise_90degree(rotate_clockWise_90degree(old)));
 	}
+	
+	private boolean isBoardFull() {
+		for (int i = 0; i < ROWS; i++) {
+			for (int j = 0; j < COLS; j++) {
+				if (tiles[i][i] == 0) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	public boolean canMove() {
+		if (!isBoardFull()) {
+			return true;
+		}
+		for (int x = 0; x < ROWS; x++) {
+			for (int y = 0; y < COLS; y++) {
+				if ((x < 3 && tiles[x][y] == tiles[x + 1][y])
+						|| ((y < 3) && tiles[x][y] == tiles[x][y + 1])) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public int getNumber(int x, int y) {
+		if (x < 0 || x >= ROWS || y < 0 || y >= COLS) {
+			return -1;
+		}
+		return tiles[x][y];
+	}
+
+	public void resetGame() {
+		lose = false;
+		tiles = new int[ROWS][COLS];
+		addANumber();
+		addANumber();
+	}
+
+	private void addANumber() {
+		if (!isBoardFull()) {
+			ArrayList<String> emptySpots = GameUtil.snapshotEmptySpots(tiles);
+			int index = (int) (Math.random() * emptySpots.size())
+					% emptySpots.size();
+			String emptyLocation = emptySpots.get(index);
+
+			int x = Integer.parseInt(emptyLocation.substring(0, 1));
+			int y = Integer.parseInt(emptyLocation.substring(2, 3));
+			tiles[x][y] = Math.random() < 0.9 ? 2 : 4;
+		}
+	}
+
+	
+
 	public int score() {
 		return score;
 	}
 	
-
 }
