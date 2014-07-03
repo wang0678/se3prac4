@@ -57,15 +57,21 @@ public class Game2048Board extends JPanel {
 				repaint();
 			}
 		});
-		
+		processer.resetGame();
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		
+		super.paint(g);
+		g.setColor(BG_COLOR);
+		g.fillRect(0, 0, this.getSize().width, this.getSize().height);
+		for (int y = 0; y < GameUtil.COLS; y++) {
+			for (int x = 0; x < GameUtil.COLS; x++) {
+				drawTile(g, new Tile(processer.getNumber(y, x)), x, y);
+			}
+		}
 			}
 		
-
 	private void drawTile(Graphics g2, Tile tile, int x, int y) {
 		if (tile == null) {
 			return;
