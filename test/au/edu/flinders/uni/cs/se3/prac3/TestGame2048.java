@@ -231,7 +231,7 @@ public class TestGame2048 extends TestCase {
 		
 		
 		}
-	
+		
 	public void test_rotate_clockWise_270degree(){
 		Game2048Core processer = new Game2048Core();
 		int[][] in = null;
@@ -254,7 +254,7 @@ public class TestGame2048 extends TestCase {
 		
 		
 		}
-	
+		
 	public void test_tilt_board_left() {
 		Game2048Core processer = new Game2048Core();
 		int[][] in = null;
@@ -277,7 +277,7 @@ public class TestGame2048 extends TestCase {
 				           { 0, 0, 0, 2 }, 
 				           { 0, 0, 2, 2 },
 				           { 2, 4, 6, 8 }
-				           };
+				     };
 				         
 		expected = new int[][] {  { 4, 2, 0, 0 }, 
 				                  { 2, 0, 0, 0 },
@@ -296,9 +296,9 @@ public class TestGame2048 extends TestCase {
 				                 { 4, 0, 0, 0 },
 				                 { 2, 4, 4, 0 }, 
 				                 { 2, 4, 6, 8 } 
-				                 };
+		                 };
 		out = processer.tilt_board_left(in);
 	}
-}
-	
+	}
+
 	
