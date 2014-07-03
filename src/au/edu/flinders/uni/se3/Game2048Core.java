@@ -175,7 +175,67 @@ public class Game2048Core implements Game2048ProcesserIf {
 		}
 	}
 
+	public void tilt_board_down() {
+		int[][] tempTiles = tilt_board_down(tiles);
+		boolean needed = !GameUtil.compare(tempTiles, tiles);
+		tiles = tempTiles;
 	
+		if (needed) {
+			addANumber();
+		}
+
+	}
+
+	public void tilt_board_left() {
+		int[][] tempTiles = tilt_board_left(tiles);
+		boolean needed = !GameUtil.compare(tempTiles, tiles);
+		tiles = tempTiles;
+		if (needed) {
+			addANumber();
+		}
+
+	}
+
+	public void tilt_board_right() {
+		int[][] tempTiles = tilt_board_right(tiles);
+		boolean needed = !GameUtil.compare(tempTiles, tiles);
+		tiles = tempTiles;
+		if (needed) {
+			addANumber();
+		}
+
+	}
+
+	public void tilt_board_up() {
+		int[][] tempTiles = tilt_board_up(tiles);
+		boolean needed = !GameUtil.compare(tempTiles, tiles);
+		tiles = tempTiles;
+		if (needed) {
+			addANumber();
+		}
+
+	}
+
+	public void markGameLose() {
+		lose = true;
+
+	}
+
+	public boolean win() {
+		return score() == GameUtil.WINPOINTS_2048;
+	}
+
+	public boolean lose() {
+		return lose;
+	}
+
+	public int[][] getBoard() {
+		return tiles;
+	}
+
+	public void setBoard(int[][] tiles) {
+		this.tiles = tiles;
+	}
 
 	public int score() {
 		return score;
