@@ -1,5 +1,7 @@
 package au.edu.flinders.uni.se3.util;
 
+import java.util.ArrayList;
+
 public abstract class GameUtil {
 
 	public static final String PASSED = " - PASSED!";
@@ -12,7 +14,7 @@ public abstract class GameUtil {
 
 	public static final int COLS = 4;
 
-	
+	public static final int WINPOINTS_2048 = 2048;
 
 	public static boolean compareExpectToActualLine(int[] expected, int[] actual) {
 		if (expected == null || actual == null
@@ -54,6 +56,17 @@ public abstract class GameUtil {
 	}
 	
 	
+	public static ArrayList<String> snapshotEmptySpots(int[][] tiles) {
+		ArrayList<String> emptySpots = new ArrayList<String>();
+		for (int x = 0; x < ROWS; x++) {
+			for (int y = 0; y < COLS; y++) {
+				if (tiles[x][y] == 0) {
+					emptySpots.add(x + "," + y);
+				}
+			}
+		}
+		return emptySpots;
+	}
 
 
 }
