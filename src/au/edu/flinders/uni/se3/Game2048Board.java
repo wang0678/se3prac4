@@ -101,10 +101,28 @@ public class Game2048Board extends JPanel {
 			g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE
 					- (TILE_SIZE - h) / 2 - 2);
 
-		
+		if (processer.win() || processer.lose()) {
+			g.setColor(new Color(255, 255, 255, 30));
+			g.fillRect(0, 0, getWidth(), getHeight());
+			g.setColor(new Color(78, 139, 202));
+			g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
+			if (processer.win()) {
+				g.drawString("You won!", 68, 150);
 			}
+			if (processer.lose()) {
+				g.drawString("Game over!", 50, 130);
+				g.drawString("You lose!", 64, 200);
+			}
+			if (processer.win() || processer.lose()) {
+				g.setFont(new Font(FONT_NAME, Font.PLAIN, 16));
+				g.setColor(new Color(128, 128, 128, 128));
+				g.drawString("Press ESC to play again", 80, getHeight() - 40);
+			}
+		}
+		g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
+		g.drawString("Score: " + processer.score(), 200, 365);
 		
-		
+	}
 	
 	private static int offsetCoors(int arg) {
 		return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
