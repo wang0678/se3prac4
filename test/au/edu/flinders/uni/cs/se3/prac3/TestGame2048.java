@@ -301,13 +301,29 @@ public class TestGame2048 extends TestCase {
 					expected, GameUtil.FAILED);
 			fail();
 		}
-		
+		in = new int[][] { { 2, 2, 0, 2 }, 
+                           { 2, 0, 0, 2 },
+                           { 2, 0, 2, 2 },
+                           { 2, 0, 2, 0 } 
+                              };
+   out = processer.tilt_board_left(in);
+   expected = new int[][] { { 4, 2, 0, 0 }, 
+                            { 4, 0, 0, 0 },
+                            { 4, 2, 0, 0 }, 
+                            { 4, 0, 0, 0 } };
+if (GameUtil.compareExpectToActualBoard(expected, out)) {
+GameUtil.printBoard(in, "after tilt board left became", out,
+	expected, GameUtil.PASSED);
+} else {
+GameUtil.printBoard(in, "after tilt board left became", out,
+	expected, GameUtil.FAILED);
+fail();
+}
 		in = new int[][] { { 2, 2, 0, 2 }, 
 				           { 0, 0, 0, 2 }, 
 				           { 0, 0, 2, 2 },
 				           { 2, 4, 6, 8 }
 				     };
-				         
 		expected = new int[][] {  { 4, 2, 0, 0 }, 
 				                  { 2, 0, 0, 0 },
 				                  { 4, 0, 0, 0 }, 
