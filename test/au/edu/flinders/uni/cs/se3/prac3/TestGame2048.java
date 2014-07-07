@@ -357,6 +357,23 @@ fail();
 			fail();
 	}
 
+		in = new int[][] { { 0, 0, 2, 2 }, 
+		                   { 0, 2, 2, 2 }, 
+		                   { 2, 4, 0, 2 },
+		                   { 4, 4, 8, 8 } };
+  expected = new int[][] { { 4, 0, 0, 0 }, 
+		                   { 4, 2, 0, 0 },
+		                   { 2, 4, 2, 0 }, 
+		                   { 8, 16, 0, 0 } };
+out = processer.tilt_board_left(in);
+if (GameUtil.compareExpectToActualBoard(expected, out)) {
+	GameUtil.printBoard(in, "after tilt board left became", out,
+			expected, GameUtil.PASSED);
+} else {
+	GameUtil.printBoard(in, "after tilt board left became", out,
+			expected, GameUtil.FAILED);
+	fail();
+}
 	}
 	
 	public void test_tilt_board_up() {
