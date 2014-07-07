@@ -486,7 +486,25 @@ if (GameUtil.compareExpectToActualBoard(expected, out)) {
 					expected, GameUtil.FAILED);
 			fail();
         }
-    	
+    
+		in = new int[][] { { 6, 4, 2, 2 }, 
+		                   { 2, 8, 2, 2 },
+		                   { 6, 2, 8, 2 },
+		                   { 2, 4, 4, 8 } 
+		                               };
+out = processer.tilt_board_right(in);
+expected = new int[][] { { 0, 6, 4, 4 }, 
+		                 { 0, 2, 8, 4 },
+		                 { 6, 2, 8, 2 }, 
+		                 { 0, 2, 8, 8 } };
+if (GameUtil.compareExpectToActualBoard(expected, out)) {
+	GameUtil.printBoard(in, "after tilt board right became", out,
+			expected, GameUtil.PASSED);
+} else {
+	GameUtil.printBoard(in, "after tilt board right became", out,
+			expected, GameUtil.FAILED);
+	fail();
+}
     }
     
     public void test_tilt_board_down(){
